@@ -6,6 +6,14 @@ import time
 cheat_process = None
 
 def main(page):
+    page.title = "Launcher"  # 设置窗口标题
+    page.window_width = 500
+    page.window_height = 650
+    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
+    page.font_family = "Microsoft YaHei"
+    page.window_maximizable = False  # 禁止窗口最大化
+    page.theme_mode = ft.ThemeMode.LIGHT  # 设置窗口颜色为明亮模式
+
     def install_clicked(e):
         process = subprocess.Popen(
             ['DriverLoader.exe'],  # 要执行的命令和参数
@@ -55,10 +63,13 @@ def main(page):
         t.update()
 
     t = ft.Text(value="Hello, world!", color="green")
-    page.add(ft.ElevatedButton("安装驱动", on_click=install_clicked))
-    new_task = ft.TextField(hint_text="输入你的J8码", width=300)
-    page.add(ft.Row([new_task, ft.ElevatedButton("启动", on_click=start_clicked)]))
-    page.add(ft.ElevatedButton("关闭", on_click=kill_clicked))
+    new_task = ft.TextField(hint_text="输入你的J8码", width=300, text_align=ft.TextAlign.CENTER)
+    page.add(new_task)
+    page.add(ft.Row([
+        ft.ElevatedButton("安装驱动", on_click=install_clicked),
+        ft.ElevatedButton("启动", on_click=start_clicked),
+        ft.ElevatedButton("关闭", on_click=kill_clicked)
+    ], alignment=ft.MainAxisAlignment.CENTER))
     page.add(t)
 
 ft.app(target=main)

@@ -51,3 +51,9 @@ class config:
         with open(self.config_name, "w") as f:
             for key, value in self.config_dict.items():
                 f.write(key + " " + value + "\n")
+
+    def __getitem__(self, index):
+        return self.config_dict[index]
+
+    def __repr__(self):
+        return repr(self.config_dict)

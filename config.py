@@ -54,6 +54,9 @@ class config:
 
     def __getitem__(self, index):
         return self.config_dict[index]
+    
+    def __setitem__(self, key, value):
+        self.config_dict[key] = value
 
     def __repr__(self):
         return repr(self.config_dict)

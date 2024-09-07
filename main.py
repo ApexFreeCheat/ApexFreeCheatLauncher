@@ -14,8 +14,8 @@ def to_bool(value):
 
 def main(page):
     page.title = "Launcher"  # 设置窗口标题
-    page.window.width = 800
-    page.window.height = 700
+    page.window.width = 1280
+    page.window.height = 720
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.font_family = "Microsoft YaHei"
     page.window.maximizable = False  # 禁止窗口最大化
@@ -64,11 +64,92 @@ def main(page):
 
     def load_clicked(e):
         config_set.load()
-        aimbot.value = to_bool(config_set['FEATURE_AIMBOT_ON'])
+        aimbot_on.value = config_set['FEATURE_AIMBOT_ON']
+        sense_on.value = config_set['FEATURE_SENSE_ON']
+        item_glow_on.value = config_set['FEATURE_ITEM_GLOW_ON']
+        norecoil_on.value = config_set['FEATURE_NORECOIL_ON']
+        triggerbot_on.value = config_set['FEATURE_TRIGGERBOT_ON']
+        quickturn_on.value = config_set['FEATURE_QUICKTURN_ON']
+        quickturn_button.value = config_set['FEATURE_QUICKTURN_BUTTON']
+        spectator_on.value = config_set['FEATURE_SPECTATOR_ON']
+        skinchanger_on.value = config_set['FEATURE_SKINCHANGER_ON']
+        print_levels.value = config_set['FEATURE_PRINT_LEVELS_ON']
+        print_levels_button.value = config_set['FEATURE_PRINT_LEVELS_BUTTON']
+        super_glide.value = config_set['FEATURE_SUPER_GLIDE_ON']
+        map_radar.value = config_set['FEATURE_MAP_RADAR_ON']
+        map_radar_button.value = config_set['FEATURE_MAP_RADAR_BUTTON']
+        norecoil_pitch_reduction.value = config_set['NORECOIL_PITCH_REDUCTION']
+        norecoil_yaw_reduction.value = config_set['NORECOIL_YAW_REDUCTION']
+        triggerbot_zoomed_range.value = config_set['TRIGGERBOT_ZOOMED_RANGE']
+        triggerbot_hipfire_range.value = config_set['TRIGGERBOT_HIPFIRE_RANGE']
+        triggerbot_pause_button.value = config_set['TRIGGERBOT_PAUSE_BUTTON']
+        sense_maxrange.value = config_set['SENSE_MAXRANGE']
+        aimbot_activated_by_attack.value = config_set['AIMBOT_ACTIVATED_BY_ATTACK']
+        aimbot_activated_by_ads.value = config_set['AIMBOT_ACTIVATED_BY_ADS']
+        aimbot_activated_by_key.value = config_set['AIMBOT_ACTIVATED_BY_KEY']
+        aimbot_activation_key.value = config_set['AIMBOT_ACTIVATION_KEY']
+        aimbot_smooth.value = config_set['AIMBOT_SMOOTH']
+        aimbot_smooth_extra_by_distance.value = config_set['AIMBOT_SMOOTH_EXTRA_BY_DISTANCE']
+        aimbot_fov.value = config_set['AIMBOT_FOV']
+        aimbot_predict_bulletdrop.value = config_set['AIMBOT_PREDICT_BULLETDROP']
+        aimbot_predict_movement.value = config_set['AIMBOT_PREDICT_MOVEMENT']
+        aimbot_allow_target_switch.value = config_set['AIMBOT_ALLOW_TARGET_SWITCH']
+        aimbot_max_distance.value = config_set['AIMBOT_MAX_DISTANCE']
+        aimbot_min_distance.value = config_set['AIMBOT_MIN_DISTANCE']
         page.update()
 
     def save_clicked(e):
-        config_set['FEATURE_AIMBOT_ON'] = to_bool(aimbot.value)
+        config_set['FEATURE_AIMBOT_ON'] = aimbot_on.value
+        config_set['FEATURE_SENSE_ON'] = sense_on.value
+        config_set['FEATURE_ITEM_GLOW_ON'] = item_glow_on.value
+        config_set['FEATURE_NORECOIL_ON'] = norecoil_on.value
+        config_set['FEATURE_TRIGGERBOT_ON'] = triggerbot_on.value
+        config_set['FEATURE_QUICKTURN_ON'] = quickturn_on.value
+        config_set['FEATURE_QUICKTURN_BUTTON'] = quickturn_button.value
+        config_set['FEATURE_SPECTATOR_ON'] = spectator_on.value
+        config_set['FEATURE_SKINCHANGER_ON'] = skinchanger_on.value
+        config_set['FEATURE_PRINT_LEVELS_ON'] = print_levels.value
+        config_set['FEATURE_PRINT_LEVELS_BUTTON'] = print_levels_button.value
+        config_set['FEATURE_SUPER_GLIDE_ON'] = super_glide.value
+        config_set['FEATURE_MAP_RADAR_ON'] = map_radar.value
+        config_set['FEATURE_MAP_RADAR_BUTTON'] = map_radar_button.value
+        config_set['NORECOIL_PITCH_REDUCTION'] = norecoil_pitch_reduction.value
+        config_set['NORECOIL_YAW_REDUCTION'] = norecoil_yaw_reduction.value
+        config_set['TRIGGERBOT_ZOOMED_RANGE'] = triggerbot_zoomed_range.value
+        config_set['TRIGGERBOT_HIPFIRE_RANGE'] = triggerbot_hipfire_range.value
+        config_set['TRIGGERBOT_PAUSE_BUTTON'] = triggerbot_pause_button.value
+        config_set['SENSE_MAXRANGE'] = sense_maxrange.value
+        config_set['AIMBOT_ACTIVATED_BY_ATTACK'] = aimbot_activated_by_attack.value
+        config_set['AIMBOT_ACTIVATED_BY_ADS'] = aimbot_activated_by_ads.value
+        config_set['AIMBOT_ACTIVATED_BY_KEY'] = aimbot_activated_by_key.value
+        config_set['AIMBOT_ACTIVATION_KEY'] = aimbot_activation_key.value
+        config_set['AIMBOT_SMOOTH'] = aimbot_smooth.value
+        config_set['AIMBOT_SMOOTH_EXTRA_BY_DISTANCE'] = aimbot_smooth_extra_by_distance.value
+        config_set['AIMBOT_FOV'] = aimbot_fov.value
+        config_set['AIMBOT_PREDICT_BULLETDROP'] = aimbot_predict_bulletdrop.value
+        config_set['AIMBOT_PREDICT_BULLETDROP'] = aimbot_predict_bulletdrop.value
+        config_set['AIMBOT_PREDICT_MOVEMENT'] = aimbot_predict_movement.value
+        config_set['AIMBOT_ALLOW_TARGET_SWITCH'] = aimbot_allow_target_switch.value
+        config_set['AIMBOT_MAX_DISTANCE'] = aimbot_max_distance.value
+        config_set['AIMBOT_MIN_DISTANCE'] = aimbot_min_distance.value
+        config_set['AIMBOT_PREDICT_BULLETDROP'] = aimbot_predict_bulletdrop.value
+        config_set['AIMBOT_PREDICT_MOVEMENT'] = aimbot_predict_movement.value
+        config_set['AIMBOT_ALLOW_TARGET_SWITCH'] = aimbot_allow_target_switch.value
+        config_set['AIMBOT_PREDICT_BULLETDROP'] = aimbot_predict_bulletdrop.value
+        config_set['AIMBOT_PREDICT_MOVEMENT'] = aimbot_predict_movement.value
+        config_set['AIMBOT_PREDICT_BULLETDROP'] = aimbot_predict_bulletdrop.value
+        config_set['AIMBOT_PREDICT_BULLETDROP'] = aimbot_predict_bulletdrop.value
+        config_set['AIMBOT_PREDICT_MOVEMENT'] = aimbot_predict_movement.value
+        config_set['AIMBOT_ALLOW_TARGET_SWITCH'] = aimbot_allow_target_switch.value
+        config_set['AIMBOT_MAX_DISTANCE'] = aimbot_max_distance.value
+        config_set['AIMBOT_PREDICT_BULLETDROP'] = aimbot_predict_bulletdrop.value
+        config_set['AIMBOT_PREDICT_MOVEMENT'] = aimbot_predict_movement.value
+        config_set['AIMBOT_PREDICT_BULLETDROP'] = aimbot_predict_bulletdrop.value
+        config_set['AIMBOT_PREDICT_BULLETDROP'] = aimbot_predict_bulletdrop.value
+        config_set['AIMBOT_PREDICT_MOVEMENT'] = aimbot_predict_movement.value
+        config_set['AIMBOT_ALLOW_TARGET_SWITCH'] = aimbot_allow_target_switch.value
+        config_set['AIMBOT_MAX_DISTANCE'] = aimbot_max_distance.value
+        config_set['AIMBOT_MIN_DISTANCE'] = aimbot_min_distance.value
         config_set.save()
         page.update()
 
@@ -105,37 +186,50 @@ def main(page):
         ft.ElevatedButton("关闭", on_click=kill_clicked)
     ], alignment=ft.MainAxisAlignment.CENTER))
     page.add(cmd_info)
-    aimbot = ft.Checkbox(label="aimbot", value=False)
-    sense = ft.Checkbox(label="sense", value=False)
-    item_glow = ft.Checkbox(label="item_glow", value=False)
-    no_recoil = ft.Checkbox(label="no_recoil", value=False)
-    trigger_bot = ft.Checkbox(label="trigger_bot", value=False)
-    quick_turn = ft.Checkbox(label="quick_turn", value=False)
-    quick_turn_text = ft.Text(value="quick_turn")
-    quick_turn_button = ft.TextField(value='F')
-    quick_turn_set = ft.Row([quick_turn_text, quick_turn_button])
-    sepectator = ft.Checkbox(label="sepectator", value=False)
-    skinchanger = ft.Checkbox(label="skinchanger", value=False)
-    print_level = ft.Checkbox(label="print_level", value=False)
-    print_level_text = ft.Text(value="print_level")
-    print_level_button = ft.TextField(value='P')
-    print_level_set = ft.Row([print_level_text, print_level_button])
+    aimbot_on = ft.Checkbox(label="aimbot_on", value=False)
+    sense_on = ft.Checkbox(label="sense_on", value=False)
+    item_glow_on = ft.Checkbox(label="item_glow_on", value=False)
+    norecoil_on = ft.Checkbox(label="norecoil_on", value=False)
+    triggerbot_on = ft.Checkbox(label="triggerbot_on", value=False)
+    quickturn_on = ft.Checkbox(label="quickturn_on", value=False)
+    quickturn_button = ft.TextField(label="quickturn_button", value='XK_F')
+    spectator_on = ft.Checkbox(label="spectator_on", value=False)
+    skinchanger_on = ft.Checkbox(label="skinchanger_on", value=False)
+    print_levels = ft.Checkbox(label="print_levels", value=False)
+    print_levels_button = ft.TextField(label="print_level_button", value='XK_P')
     super_glide = ft.Checkbox(label="super_glide", value=False)
-    map_rader = ft.Checkbox(label="map_rader", value=False)
-    map_rade_text = ft.Text(value="map_rader")
-    map_rade_button = ft.TextField(value='M')
-    map_rader_set = ft.Row([map_rade_text, map_rade_button])
-    no_recoil_pitch_text = ft.Text(value="no_recoil_pitch")
-    no_recoil_pitch_val = ft.TextField(value='19')
-    no_recoil_pitch_set = ft.Row([no_recoil_pitch_text, no_recoil_pitch_val])
-    no_recoil_yaw_text = ft.Text(value="no_recoil_yaw")
-    no_recoil_yaw_val = ft.TextField(value='19')
-    no_recoil_yaw_set = ft.Row([no_recoil_yaw_text, no_recoil_yaw_val])
+    map_radar = ft.Checkbox(label="map_radar", value=False)
+    map_radar_button = ft.TextField(label="map_radar_button", value='XK_M')
+    norecoil_pitch_reduction = ft.TextField(label="norecoil_pitch_reduction", value='19')
+    norecoil_yaw_reduction = ft.TextField(label="norecoil_yaw_reduction", value='20')
+    triggerbot_zoomed_range = ft.TextField(label="triggerbot_zoomed_range", value='180')
+    triggerbot_hipfire_range = ft.TextField(label="triggerbot_zoomed_range", value='25')
+    triggerbot_pause_button = ft.TextField(label="triggerbot_pause_button", value='XK_Z')
+    sense_maxrange = ft.TextField(label="sense_maxrange", value='250')
+    aimbot_activated_by_attack = ft.Checkbox(label="aimbot_activated_by_attack", value=False)
+    aimbot_activated_by_ads = ft.Checkbox(label="aimbot_activated_by_ads", value=False)
+    aimbot_activated_by_key = ft.Checkbox(label="aimbot_activated_by_key", value=False)
+    aimbot_activation_key  = ft.TextField(label="aimbot_activation_key", value='XK_X')
+    aimbot_smooth = ft.TextField(label="aimbot_smooth", value='11.314159')
+    aimbot_speed = ft.TextField(label="aimbot_speed", value='81.3141')
+    aimbot_smooth_extra_by_distance  = ft.TextField(label="aimbot_speed", value='1500')
+    aimbot_fov = ft.TextField(label="aimbot_speed", value='5.3141')
+    aimbot_predict_bulletdrop = ft.Checkbox(label="aimbot_predict_bulletdrop", value=False)
+    aimbot_predict_movement = ft.Checkbox(label="aimbot_predict_movement", value=False)
+    aimbot_allow_target_switch = ft.Checkbox(label="aimbot_allow_target_switch", value=False)
+    aimbot_max_distance = ft.TextField(label="aimbot_max_distance", value='69')
+    aimbot_min_distance = ft.TextField(label="aimbot_min_distance", value='5')
     config_pan = ft.Column([
-        ft.Row([ft.Column([aimbot, sense, item_glow, no_recoil, trigger_bot, quick_turn, quick_turn_set, sepectator, skinchanger, print_level, print_level_set]),
-               ft.Column([super_glide, map_rader, map_rader_set, no_recoil_pitch_set, no_recoil_yaw_set])]),
+        ft.Row([ft.Column([aimbot_on, sense_on, item_glow_on, norecoil_on, triggerbot_on, quickturn_on, quickturn_button,
+                           spectator_on, skinchanger_on, print_levels, print_levels_button]),
+                ft.Column([super_glide, map_radar, map_radar_button, norecoil_pitch_reduction, norecoil_yaw_reduction,
+                          triggerbot_zoomed_range, triggerbot_hipfire_range, triggerbot_pause_button, sense_maxrange]),
+                ft.Column([aimbot_activated_by_attack, aimbot_activated_by_ads, aimbot_activated_by_key, aimbot_activation_key,
+                          aimbot_smooth, aimbot_speed, aimbot_smooth_extra_by_distance, aimbot_fov, aimbot_predict_bulletdrop]),
+                ft.Column([aimbot_predict_movement, aimbot_allow_target_switch, aimbot_max_distance, aimbot_min_distance])]),
         ft.Row([ft.ElevatedButton("load", on_click=load_clicked), ft.ElevatedButton("save", on_click=save_clicked)])
                ])
+    load_clicked(None)
     config_pan.visible = False
     page.add(config_pan)
 

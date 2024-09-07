@@ -1,3 +1,5 @@
+import os
+
 class config:
     def __init__(self, config_name="ApexFreeCheat.ini"):
         self.config_name = config_name
@@ -38,6 +40,8 @@ class config:
         }
 
     def load(self):
+        if not os.path.exists(self.config_name):
+            return
         with open(self.config_name, "r") as f:
             for line in f:
                 line_split = line.split()
@@ -52,11 +56,22 @@ class config:
             for key, value in self.config_dict.items():
                 f.write(key + " " + value + "\n")
 
-    def __getitem__(self, index):
-        return self.config_dict[index]
+    def __getitem__(self, key):
+        value = self.config_dict[key]
+        if value == 'YES':
+            return True
+        if value == 'NO':
+            return False
+        return value
     
     def __setitem__(self, key, value):
-        self.config_dict[key] = value
+        if isinstance(value, bool):
+            if value:
+                self.config_dict[key] = 'YES'
+            else:
+                self.config_dict[key] = 'NO'
+        else:
+            self.config_dict[key] = value
 
     def __repr__(self):
         return repr(self.config_dict)

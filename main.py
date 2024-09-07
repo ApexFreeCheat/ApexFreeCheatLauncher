@@ -4,13 +4,9 @@ import threading
 import time
 import webbrowser
 from config import config
+import os
 
 cheat_process = None
-
-def to_bool(value):
-    if isinstance(value, str):
-        return value == 'YES'
-    return 'YES' if value else 'NO'
 
 def main(page):
     page.title = "Launcher"  # 设置窗口标题
@@ -27,13 +23,11 @@ def main(page):
 
     def install_clicked(e):
         process = subprocess.Popen(
-            ['DriverLoader.exe'],  # 要执行的命令和参数
-            stdout=subprocess.PIPE,        # 捕获标准输出
-            stderr=subprocess.PIPE,         # 捕获标准错误
-            shell=True
+            ['DriverLoader.exe'],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
         )
 
-        # 等待进程完成并获取返回值
         stdout, stderr = process.communicate()
         cmd_info.value = stdout.decode('gbk') + stderr.decode('gbk')
         page.update()
@@ -41,13 +35,13 @@ def main(page):
     def start_clicked(e):
         global cheat_process
         cheat_process = subprocess.Popen(
-            ['ApexFreeCheat.exe', j8_input.value],  # 要执行的命令和参数
-            stdout=subprocess.PIPE,        # 捕获标准输出
-            stderr=subprocess.PIPE,        # 捕获标准错误
-            stdin=subprocess.PIPE,          # 提供标准输入
-            shell=True
+            ['ApexFreeCheat.exe', j8_input.value],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
         )
         threading.Thread(target=update_output).start()
+        start_button.disabled = True
+        page.update()
 
     def kill_clicked(e):
         cheat_process.kill()
@@ -155,34 +149,32 @@ def main(page):
 
     def update_output():
         lines = []
-        cmd_info.value = ""
         while True:
             lines.append(cheat_process.stdout.readline().decode('gbk'))
+            print(lines[-1])
             if len(lines) > 20:
                 lines = lines[-20:]
             cmd_info.value = "".join(lines)
-            cmd_info.update()
+            page.update()
             if cheat_process.poll() is not None:
                 break
             time.sleep(0.01)
-
-        # 进程结束后的最终更新
-        lines.extend(cheat_process.stdout.read().decode('gbk').splitlines())
-        lines.extend(cheat_process.stderr.read().decode('gbk').splitlines())
-        if len(lines) > 20:
-            lines = lines[-20:]
-        cmd_info.value = "".join(lines)
+        stdout = cheat_process.stdout.read().decode('gbk')
+        stderr = cheat_process.stderr.read().decode('gbk')
+        cmd_info.value = cmd_info.value + stdout + stderr
+        start_button.disabled = False
         page.update()
 
     cmd_info = ft.Text(value="Apex Free Cheat", color="green")
     j8_input = ft.TextField(hint_text="输入你的J8码", width=300, text_align=ft.TextAlign.CENTER)
     page.add(j8_input)
+    start_button = ft.ElevatedButton("启动", on_click=start_clicked)
     page.add(ft.Row([
         ft.ElevatedButton("注册", on_click=reg_clicked),
         ft.ElevatedButton("日志", on_click=log_clicked),
         ft.ElevatedButton("配置", on_click=config_clicked),
         ft.ElevatedButton("安装驱动", on_click=install_clicked),
-        ft.ElevatedButton("启动", on_click=start_clicked),
+        start_button,
         ft.ElevatedButton("关闭", on_click=kill_clicked)
     ], alignment=ft.MainAxisAlignment.CENTER))
     page.add(cmd_info)

@@ -13,7 +13,6 @@ def main(page):
     page.window.width = 1280
     page.window.height = 720
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    page.font_family = "Microsoft YaHei"
     page.window.maximizable = False  # 禁止窗口最大化
     page.theme_mode = ft.ThemeMode.LIGHT  # 设置窗口颜色为明亮模式
     config_set = config()
@@ -168,14 +167,14 @@ def main(page):
     cmd_info = ft.Text(value="Apex Free Cheat", color="green")
     j8_input = ft.TextField(hint_text="输入你的J8码", width=300, text_align=ft.TextAlign.CENTER)
     page.add(j8_input)
-    start_button = ft.ElevatedButton("启动", on_click=start_clicked)
+    start_button = ft.ElevatedButton("Start", on_click=start_clicked)
     page.add(ft.Row([
-        ft.ElevatedButton("注册", on_click=reg_clicked),
-        ft.ElevatedButton("日志", on_click=log_clicked),
-        ft.ElevatedButton("配置", on_click=config_clicked),
-        ft.ElevatedButton("安装驱动", on_click=install_clicked),
+        ft.ElevatedButton("Register", on_click=reg_clicked),
+        ft.ElevatedButton("Logs", on_click=log_clicked),
+        ft.ElevatedButton("Config", on_click=config_clicked),
+        ft.ElevatedButton("Install Driver", on_click=install_clicked),
         start_button,
-        ft.ElevatedButton("关闭", on_click=kill_clicked)
+        ft.ElevatedButton("Stop", on_click=kill_clicked)
     ], alignment=ft.MainAxisAlignment.CENTER))
     page.add(cmd_info)
     aimbot_on = ft.Checkbox(label="aimbot_on", value=False)

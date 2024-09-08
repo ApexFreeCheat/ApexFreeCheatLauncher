@@ -1,10 +1,8 @@
 import flet as ft
 import subprocess
 import threading
-import time
 import webbrowser
 from config import config
-import os
 
 cheat_process = None
 

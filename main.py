@@ -25,18 +25,23 @@ def main(page):
             ['DriverLoader.exe'],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
+            text=True,
+            encoding='gbk'
         )
 
         stdout, stderr = process.communicate()
-        cmd_info.value = stdout.decode('gbk') + stderr.decode('gbk')
+        cmd_info.value = stdout + stderr
         page.update()
 
     def start_clicked(e):
         global cheat_process
         cheat_process = subprocess.Popen(
             ['ApexFreeCheat.exe', j8_input.value],
+            #['ping', 'localhost', '-t'],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
+            text=True,
+            encoding='gbk'
         )
         threading.Thread(target=update_output).start()
         start_button.disabled = True
@@ -147,20 +152,20 @@ def main(page):
         page.update()
 
     def update_output():
+        cmd_info.value = "Starting ..."
         lines = []
         while True:
-            lines.append(cheat_process.stdout.readline().decode('gbk'))
-            print(lines[-1])
-            if len(lines) > 20:
-                lines = lines[-20:]
-            cmd_info.value = "".join(lines)
-            page.update()
+            for line in iter(cheat_process.stdout.readline, ''):
+                lines.append(line)
+                if len(lines) > 20:
+                    lines = lines[-20:]
+                cmd_info.value = "".join(lines)
+                page.update()
             if cheat_process.poll() is not None:
                 break
-            time.sleep(0.01)
-        stdout = cheat_process.stdout.read().decode('gbk')
-        stderr = cheat_process.stderr.read().decode('gbk')
-        cmd_info.value = cmd_info.value + stdout + stderr
+        stdout = cheat_process.stdout.read()
+        stderr = cheat_process.stderr.read()
+        cmd_info.value += stdout + stderr
         start_button.disabled = False
         page.update()
 

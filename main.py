@@ -35,7 +35,6 @@ def main(page):
         global cheat_process
         cheat_process = subprocess.Popen(
             ['ApexFreeCheat.exe', j8_input.value],
-            #['ping', 'localhost', '-t'],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
@@ -85,6 +84,7 @@ def main(page):
         aimbot_activated_by_key.value = config_set['AIMBOT_ACTIVATED_BY_KEY']
         aimbot_activation_key.value = config_set['AIMBOT_ACTIVATION_KEY']
         aimbot_smooth.value = config_set['AIMBOT_SMOOTH']
+        aimbot_speed.value = config_set['AIMBOT_SPEED']
         aimbot_smooth_extra_by_distance.value = config_set['AIMBOT_SMOOTH_EXTRA_BY_DISTANCE']
         aimbot_fov.value = config_set['AIMBOT_FOV']
         aimbot_predict_bulletdrop.value = config_set['AIMBOT_PREDICT_BULLETDROP']
@@ -120,6 +120,7 @@ def main(page):
         config_set['AIMBOT_ACTIVATED_BY_KEY'] = aimbot_activated_by_key.value
         config_set['AIMBOT_ACTIVATION_KEY'] = aimbot_activation_key.value
         config_set['AIMBOT_SMOOTH'] = aimbot_smooth.value
+        config_set['AIMBOT_SPEED'] = aimbot_speed.value
         config_set['AIMBOT_SMOOTH_EXTRA_BY_DISTANCE'] = aimbot_smooth_extra_by_distance.value
         config_set['AIMBOT_FOV'] = aimbot_fov.value
         config_set['AIMBOT_PREDICT_BULLETDROP'] = aimbot_predict_bulletdrop.value
@@ -197,7 +198,7 @@ def main(page):
     norecoil_pitch_reduction = ft.TextField(label="norecoil_pitch_reduction", value='19')
     norecoil_yaw_reduction = ft.TextField(label="norecoil_yaw_reduction", value='20')
     triggerbot_zoomed_range = ft.TextField(label="triggerbot_zoomed_range", value='180')
-    triggerbot_hipfire_range = ft.TextField(label="triggerbot_zoomed_range", value='25')
+    triggerbot_hipfire_range = ft.TextField(label="triggerbot_hipfire_range", value='25')
     triggerbot_pause_button = ft.TextField(label="triggerbot_pause_button", value='XK_Z')
     sense_maxrange = ft.TextField(label="sense_maxrange", value='250')
     aimbot_activated_by_attack = ft.Checkbox(label="aimbot_activated_by_attack", value=False)
@@ -206,8 +207,8 @@ def main(page):
     aimbot_activation_key  = ft.TextField(label="aimbot_activation_key", value='XK_X')
     aimbot_smooth = ft.TextField(label="aimbot_smooth", value='11.314159')
     aimbot_speed = ft.TextField(label="aimbot_speed", value='81.3141')
-    aimbot_smooth_extra_by_distance  = ft.TextField(label="aimbot_speed", value='1500')
-    aimbot_fov = ft.TextField(label="aimbot_speed", value='5.3141')
+    aimbot_smooth_extra_by_distance  = ft.TextField(label="aimbot_smooth_extra_by_distance", value='1500')
+    aimbot_fov = ft.TextField(label="aimbot_fov", value='5.3141')
     aimbot_predict_bulletdrop = ft.Checkbox(label="aimbot_predict_bulletdrop", value=False)
     aimbot_predict_movement = ft.Checkbox(label="aimbot_predict_movement", value=False)
     aimbot_allow_target_switch = ft.Checkbox(label="aimbot_allow_target_switch", value=False)
